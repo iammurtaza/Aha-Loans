@@ -12,7 +12,7 @@ driver.implicitly_wait(10)
 driver.get(url)
 content=driver.page_source
 soup=BeautifulSoup(content,'lxml')
-print(soup.find('table'))
+print soup.table
 
 """
 soup=BeautifulSoup(content,'lxml')
