@@ -12,12 +12,22 @@ driver.implicitly_wait(10)
 driver.get(url)
 content=driver.page_source
 soup=BeautifulSoup(content,'lxml')
-for i in range(30):
+tableIndices=[14,0,7]
+for i in tableIndices:
 	table=soup.find_all('table')[i]
+	"""
 	print(i)
 	print('\n')
 	print(table)
 	print('\n\n\n\n')
+	rows=table.find_all('tr')
+	"""
+	rows=table.find_all('tr')
+
+	for tr in rows:
+		td=tr.find_all('td')
+		row=[i.text for i in td]
+		print(row)
 
 """
 soup=BeautifulSoup(content,'lxml')
