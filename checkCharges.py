@@ -14,9 +14,14 @@ data.drop(['Status','City'],axis=1,inplace=True)
 
 
 driver=webdriver.Chrome()
+driver.set_network_conditions(
+    offline=False,
+    latency=5,  # additional latency (ms)
+    download_throughput=50 * 1024,  # maximal throughput
+    upload_throughput=50 * 1024)  # maximal throughput
 
 
-for i in range(3356):
+for i in range(2,3356):
 	name=data.Name.iloc[i]
 	name=str(name).lower()
 	cin=data.CIN.iloc[i]
@@ -30,7 +35,7 @@ for i in range(3356):
 	print(url)
 	
 	driver.implicitly_wait(10)
-	time.sleep(10)
+	time.sleep(9)
 	driver.get(url)
 	
 	"""
@@ -52,9 +57,9 @@ for i in range(3356):
 		td=tr.find_all('td')
 		row=[i.text for i in td]
 		print(row)
+
+
+
 """
-
-
-
 
         
