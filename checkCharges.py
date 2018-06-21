@@ -11,14 +11,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 data=pd.read_csv('index.csv',usecols=['CIN','Name','City','Status'])
 data.drop(['Status','City'],axis=1,inplace=True)
-
-
-driver=webdriver.Chrome()
-driver.set_network_conditions(
-    offline=False,
-    latency=5,  # additional latency (ms)
-    download_throughput=50 * 1024,  # maximal throughput
-    upload_throughput=50 * 1024)  # maximal throughput
+driver=webdriver.Firefox()
+#driver.set_network_conditions(
+ #   offline=False,
+#    latency=5,  # additional latency (ms)
+  #  download_throughput=50 * 1024,  # maximal throughput
+   # upload_throughput=50 * 1024)  # maximal throughput
 
 
 for i in range(2,3356):
@@ -34,7 +32,7 @@ for i in range(2,3356):
 	url='https://www.instafinancials.com/company/'+urlname+'/'+str(cin)	
 	print(url)
 	
-	driver.implicitly_wait(10)
+	#driver.implicitly_wait(10)
 	time.sleep(9)
 	driver.get(url)
 	

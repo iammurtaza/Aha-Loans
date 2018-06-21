@@ -1217,3 +1217,25 @@ JavaScript error: jar:file:///usr/lib/firefox/browser/omni.ja!/components/nsBrow
 1528720615033	addons.manager	DEBUG	Calling shutdown blocker for PreviousExperimentProvider
 1528720615038	addons.manager	DEBUG	Async provider shutdown done
 >>>>>>> 19ae760a4798fc120c7b5c445f4bf093239ff881
+1529561595782	geckodriver	INFO	geckodriver 0.20.1
+1529561595843	geckodriver	INFO	Listening on 127.0.0.1:39427
+1529561596813	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.TLAJfhhidvBZ"
+1529561608334	Marionette	INFO	Listening on port 38603
+1529561608491	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529561674277	geckodriver	INFO	geckodriver 0.20.1
+1529561674281	geckodriver	INFO	Listening on 127.0.0.1:46143
+1529561675293	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.q8ZBP0xuFMkK"
+1529561678163	Marionette	INFO	Listening on port 43811
+1529561678207	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.instafinancials.com/js/company.js?v=pJCakFmvSR4MuPvrRMQRLF2bK2z41A1wYQKf4T_BQXo1, line 4: SyntaxError: expected expression, got '<'
+JavaScript error: https://www.instafinancials.com/js/company.js?v=pJCakFmvSR4MuPvrRMQRLF2bK2z41A1wYQKf4T_BQXo1, line 4: SyntaxError: expected expression, got '<'
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 9507, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-d34xn2/firefox-60.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1529562386495	geckodriver	INFO	Listening on 127.0.0.1:59159
+1529562387608	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args ["-marionette"]
+1529562390291	Marionette	INFO	Listening on port 44553
+1529562390327	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529562496316	geckodriver	INFO	Listening on 127.0.0.1:44585
+1529562497430	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args ["-marionette"]
+1529562499966	Marionette	INFO	Listening on port 34509
+1529562500054	Marionette	WARN	TLS certificate errors will be ignored for this session

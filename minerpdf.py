@@ -30,7 +30,7 @@ def convert(case,fname, pages=None):
     return convertedPDF
 
 #//////////// main ///////////////////////
-filePDF  = 'AxisBank.pdf'     # input
+filePDF  = '../pdfscrapin/AxisBank.pdf'     # input
 fileHTML = 'AxisBank.pdf'   # output
 fileTXT  = 'myTXT.txt'     # output
 
