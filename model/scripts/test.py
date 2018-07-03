@@ -59,8 +59,8 @@ def twitterScore(value):
 		first_name=value['name'].split()[0]
 		last_name=value['name'].split()[1]
 		email=value['email']
-		contains_first=re.compile(first_name)
-		contains_last=re.compile(last_name)
+		contains_first=re.compile(first_name.lower())
+		contains_last=re.compile(last_name.lower())
 
 		if(contains_first.search(email)):total_score+=25
 		if(contains_last.search(email)):total_score+=25
@@ -70,23 +70,25 @@ def twitterScore(value):
 
 
 
-	if(value['user']['status']['created_at']):
-		months={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
-		last_tweet_year=int(value['user']['status']['created_at'][-4:])
-		last_tweet_month=value['user']['status']['created_at'].split()[1]
-		if(now.year-last_tweet_year is 0):
-			difference_month=now.month-months[last_tweet_month]
-			if(difference_month <= 2):
-				total_score+=60
-			elif(difference_month<=3 and difference_month>2):
-				total_score+=50	
-			elif(difference_month<=4 and difference_month>3):
-				total_score+=40
-			elif(difference_month<=5 and difference_month>4):
-				total_score+=30
-			else:total_score+=20		
-		else:
-			total_score+=10	
+	if(value['user']['statuses_count']):
+		if(value['user']['status']):
+			months={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
+			last_tweet_year=int(value['user']['status']['created_at'][-4:])
+			last_tweet_month=value['user']['status']['created_at'].split()[1]
+			if(now.year-last_tweet_year is 0):
+				difference_month=now.month-months[last_tweet_month]
+				if(difference_month <= 2):
+					total_score+=60
+				elif(difference_month<=3 and difference_month>2):
+					total_score+=50	
+				elif(difference_month<=4 and difference_month>3):
+					total_score+=40
+				elif(difference_month<=5 and difference_month>4):
+					total_score+=30
+				else:total_score+=20		
+			else:
+				total_score+=10
+		else:pass			
 
 	else:pass
 	#print("###################",total_score)
