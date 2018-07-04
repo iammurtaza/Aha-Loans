@@ -12,29 +12,47 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
 def main():
-	file_url=sys.argv[1]
-	bank_type=sys.argv[2]
+	# file_url=sys.argv[1]
+	# bank_type=sys.argv[2]
 
-	if(bank_type == "icici"):
-		name = file_url.split('/')
-		name2 = name[-1].split('.')
-		filename = name2[0]
-		ts = int(time.time())
-		ts = str(ts)
-		filename=filename+'_'+ts+'.pdf';
-		response = urlopen(file_url)
-		file = open(filename, 'wb')
-		file.write(response.read())
-		file.close()
-		print(checkicici(filename))
-		os.remove(filename)
+	# if(bank_type == "icici"):
+	# 	name = file_url.split('/')
+	# 	name2 = name[-1].split('.')
+	# 	filename = name2[0]
+	# 	ts = int(time.time())
+	# 	ts = str(ts)
+	# 	filename=filename+'_'+ts+'.pdf';
+	# 	response = urlopen(file_url)
+	# 	file = open(filename, 'wb')
+	# 	file.write(response.read())
+	# 	file.close()
+	# 	print(checkicici(filename))
+	# 	os.remove(filename)
 
-	else:
-		print("NOT ICICI")
+	# else:
+	# 	print("NOT ICICI")
+	filename = "Axis-Bank-protected.pdf"
+	print(checkicici(filename))
 
 def checkicici(filename):
+	password = "gullakh@123"
 	pdfFileObj = open(filename,'rb')
 	pdfFile = PdfFileReader(pdfFileObj)
+
+	if pdfFile.isEncrypted:
+		try:
+			pdfFile.decrypt(password)
+			print('File Decrypted (PyPDF2)')
+		except:
+			command="cp "+ filename +" temp.pdf; qpdf --password='" + password + "' --decrypt temp.pdf "+ filename
+			os.system(command)
+			print('File Decrypted (qpdf)')
+			#re-open the decrypted file
+			pdfFileObj = open(filename,'rb')
+			pdfFile = PdfFileReader(pdfFileObj)
+	else:
+		print('File Not Encrypted')
+
 	num_pages = pdfFile.numPages
 	count = 0
 	text = ""
@@ -47,6 +65,8 @@ def checkicici(filename):
 	if text == "":
 		text = textract.process(filename)
 
+	print(text)
+	
 	text = str(text)
 	tokens = word_tokenize(text)
 	detailed="DETAILED"
