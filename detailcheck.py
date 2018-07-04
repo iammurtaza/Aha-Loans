@@ -19,7 +19,7 @@ def main():
 	st = name2[0]
 	ts = int(time.time())
 	ts = str(ts)
-	st=st+'_'+ts;
+	st=st+'_'+ts+'.pdf';
 	response = urlopen(file_url)
 	file = open(st, 'wb')
 	file.write(response.read())
@@ -27,7 +27,7 @@ def main():
 
 	if(bank_type == "icici"):print(checkicici(st))
 	else:print("NO")
-	os.remove(st)	
+	os.remove(st)
 
 def checkicici(st):
 	pdfFileObj = open(st,'rb')
@@ -59,5 +59,5 @@ def checkicici(st):
 if __name__ == '__main__':
 	main()
 
-
 # python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/2/1530521847_HDFC3.pdf icici
+# python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/2/1530598673_ICICI6.pdf icici
