@@ -58,3 +58,6 @@ def checkicici(st):
 
 if __name__ == '__main__':
 	main()
+
+
+# python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/2/1530521847_HDFC3.pdf icici
