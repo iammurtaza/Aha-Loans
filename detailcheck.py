@@ -1,27 +1,35 @@
 import PyPDF2 
 import textract
 import requests
-import os, sys
+import os
+import sys
 import time
+import string
+import re
 from urllib.request import urlopen
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-import re
-# st='1530521847_HDFC3'
-# file_url = "https://gullakh.s3-us-west-2.amazonaws.com/2/1530521847_HDFC3.pdf"
-# ts = int(time.time())
-# ts = str(ts)
-# st=st+ts;
-# response = urlopen(file_url)
-# file = open(st, 'wb')
-# file.write(response.read())
-# file.close()
-# print('Download Complete')
 
-for i in range(1,39):
-	st='ICICI'
-	st+=str(i)
-	st+='.pdf'
+def main():
+	file_url=sys.argv[1]
+	bank_type=sys.argv[2]
+
+	name = file_url.split('/')
+	name2 = name[-1].split('.')
+	st = name2[0]
+	ts = int(time.time())
+	ts = str(ts)
+	st=st+'_'+ts;
+	response = urlopen(file_url)
+	file = open(st, 'wb')
+	file.write(response.read())
+	file.close()
+
+	if(bank_type == "icici"):print(checkicici(st))
+	else:print("NO")
+	os.remove(st)	
+
+def checkicici(st):
 	pdfFileObj = open(st,'rb')
 	pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 	num_pages = pdfReader.numPages
@@ -35,9 +43,6 @@ for i in range(1,39):
 
 	if text == "":
 		text = textract.process(st)
-		print(str(i) + " OCR USED")
-	else:
-		print(str(i) + " OCR NOT USED")
 
 	text = str(text)
 	tokens = word_tokenize(text)
@@ -46,18 +51,10 @@ for i in range(1,39):
 	checkdetailed=re.compile(detailed)
 	checkstatement=re.compile(statement)
 
-	if((checkstatement.search(tokens[1]) or checkstatement.search(tokens[3])) and (checkdetailed.search(tokens[0]) or checkdetailed.search(tokens[2]))):
-		print("DETAILED STATEMENT") 
+	if((checkdetailed.search(tokens[0]) and checkstatement.search(tokens[1])) or (checkdetailed.search(tokens[2]) or checkstatement.search(tokens[3]))):
+		return("TRUE") 
 	else:
-		print("NORMAL STATEMENT")
-	print('\n')
-	# import re
-	# text = 'The quick brown\nfox jumps*over the lazy dog.'
-	# print(re.split('; |, |\*|\n',text))
-	# search = 'DETAILED'
-	# if search in tokens:
-	# 	print('Found')
-	# else:
-	# 	print('Not found')
+		return("FALSE")
 
-	# os.remove(st)
+if __name__ == '__main__':
+	main()
