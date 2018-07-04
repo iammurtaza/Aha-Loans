@@ -6,7 +6,7 @@ int main(){
 	string input,output;
 	int cases;
 	string operators = "+-*/^";
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	cin>>cases;
 	op.push('N');
 	while(cases--){
