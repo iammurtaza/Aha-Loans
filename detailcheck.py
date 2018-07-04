@@ -64,3 +64,4 @@ if __name__ == '__main__':
 # python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/2/1530521847_HDFC3.pdf hdfc
 # python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/2/1530598673_ICICI6.pdf icici
 # python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/php5Dt9Xf.pdf axis
+# python3 -W ignore detailcheck.py https://gullakh.s3-us-west-2.amazonaws.com/2/1530277413_ICICI%20Stmt.pdf icici
