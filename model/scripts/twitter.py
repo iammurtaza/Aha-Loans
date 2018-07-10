@@ -2,19 +2,38 @@ import json
 import sys
 import datetime
 import re
+import unicodedata
 
 def main():
-	accnt=sys.argv[1]
-	args=sys.argv[2:]
+	#accnt=sys.argv[1]
+	#args=sys.argv[2:]
+	accnt="twitter"
+	args='{"token":"935426607220629504-YMpxqgZv5EViljATeuU3Xwuj875nvrM","tokenSecret":"tw5YPyEXLqduUFFTCn67vH2TyFGj0mH0wUoaAp3iH9oM1","id":"935426607220629504","nickname":"mhzTweets","name":"Murtaza Hasan","email":"murtaza.hasan.zaidi@gmail.com","avatar":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","user":{"id_str":"935426607220629504","entities":{"description":{"urls":[]}},"protected":false,"followers_count":5,"friends_count":71,"listed_count":0,"created_at":"Tue Nov 28 08:34:17 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":0,"lang":"en","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_tile":false,"profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none","suspended":false,"needs_phone_verification":false,"url":null,"profile_background_image_url":null,"profile_background_image_url_https":null,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","location":"","description":""},"avatar_original":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile.png"}'
 	
 
-	for item in args:
-		item=item.replace('!','\!')
-		value=json.loads(item.replace('\/','/'),strict=False)
-		
+	
+	args=args.replace("\'","")
+
+	testTrue=re.compile(r"true")
+	testFalse=re.compile(r"false")
+	testlink=re.compile("(\\u003Ca)(.*)()(\\u003E)")
+
+
+	replacement="html"
+	replacementTrue="\"true\""
+	replacementFalse="\"false\""
+
+	args=re.sub(testlink,replacement,args)
+	args=re.sub(testTrue,replacementTrue,args)
+	args=re.sub(testFalse,replacementFalse,args)
+
+
+	value=json.loads(args,strict=False)
 	print("******************************************************************************\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+	#print(args)
+
 	if(accnt == "twitter"):print(twitterScore(value))
-	else:print("NO")
+	#elwse:print("NO")
 
 
 def twitterScore(value):
