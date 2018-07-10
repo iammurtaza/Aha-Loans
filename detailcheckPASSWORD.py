@@ -1,41 +1,34 @@
-import PyPDF2 
-import textract
+import PyPDF2
 import requests
-import os
 import sys
+import os
 import time
-import string
-import re
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from urllib.request import urlopen
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 
 def main():
 	# file_url=sys.argv[1]
-	# bank_type=sys.argv[2]
-
-	# if(bank_type == "icici"):
-	# 	name = file_url.split('/')
-	# 	name2 = name[-1].split('.')
-	# 	filename = name2[0]
-	# 	ts = int(time.time())
-	# 	ts = str(ts)
-	# 	filename=filename+'_'+ts+'.pdf';
-	# 	response = urlopen(file_url)
-	# 	file = open(filename, 'wb')
-	# 	file.write(response.read())
-	# 	file.close()
-	# 	print(checkicici(filename))
-	# 	os.remove(filename)
-
-	# else:
-	# 	print("NOT ICICI")
+	# password=sys.argv[2]
+	# name = file_url.split('/')
+	# name2 = name[-1].split('.')
+	# filename = name2[0]
+	# ts = int(time.time())
+	# ts = str(ts)
+	# filename=filename+'_'+ts+'.pdf';
+	# response = urlopen(file_url)
+	# file = open(filename, 'wb')
+	# file.write(response.read())
+	# file.close()
+	
 	filename = "Axis-Bank-protected.pdf"
-	print(checkicici(filename))
-
-def checkicici(filename):
 	password = "gullakh@123"
+
+	decrypt(filename, password)
+	# os.remove(filename)
+	os.remove("temp.pdf")
+
+def decrypt(filename, password):
+	
 	pdfFileObj = open(filename,'rb')
 	pdfFile = PdfFileReader(pdfFileObj)
 
@@ -47,37 +40,21 @@ def checkicici(filename):
 			command="cp "+ filename +" temp.pdf; qpdf --password='" + password + "' --decrypt temp.pdf "+ filename
 			os.system(command)
 			print('File Decrypted (qpdf)')
-			#re-open the decrypted file
 			pdfFileObj = open(filename,'rb')
 			pdfFile = PdfFileReader(pdfFileObj)
 	else:
 		print('File Not Encrypted')
-
-	num_pages = pdfFile.numPages
-	count = 0
-	text = ""
-
-	while count < num_pages:
-	    pageObj = pdfFile.getPage(count)
-	    count +=1
-	    text += pageObj.extractText()
-
-	if text == "":
-		text = textract.process(filename)
-
-	print(text)
 	
-	text = str(text)
-	tokens = word_tokenize(text)
-	detailed="DETAILED"
-	statement="STATEMENT"
-	checkdetailed=re.compile(detailed)
-	checkstatement=re.compile(statement)
+	# num_pages = pdfFile.numPages
+	# count = 0
+	# text = ""
+	# while count < num_pages:
+	#     pageObj = pdfFile.getPage(count)
+	#     count +=1
+	#     text += pageObj.extractText()
 
-	if((checkdetailed.search(tokens[0]) and checkstatement.search(tokens[1])) or (checkdetailed.search(tokens[2]) or checkstatement.search(tokens[3]))):
-		return("TRUE") 
-	else:
-		return("FALSE")
+	# text = str(text)
+	# print(text)
 
 if __name__ == '__main__':
 	main()
