@@ -45,7 +45,7 @@ def twitterScore(value):
 		year_created=value['user']['created_at'][-4:]
 		now=datetime.datetime.now()
 		life_time_of_accnt=now.year-int(year_created)
-		time_score=dict([(14,50),(13,50),(12,50),(11,50),(10,50),(9,50),(8,50),(7,50),(6,50),(5,50),(4,50),(4,50),(3,30),(2,20),(1,10),(0,0)])
+		time_score=dict([(14,30),(13,30),(12,30),(11,30),(10,30),(9,30),(8,30),(7,30),(6,30),(5,30),(4,20),(3,20),(2,10),(1,10),(0,0)])
 
 		total_score+=time_score[life_time_of_accnt]
 
@@ -58,12 +58,12 @@ def twitterScore(value):
 	if(value['name'] and value['email']):
 		first_name=value['name'].split()[0]
 		last_name=value['name'].split()[1]
-		email=value['email']
+		email=value['email'].lower()
 		contains_first=re.compile(first_name.lower())
 		contains_last=re.compile(last_name.lower())
 
-		if(contains_first.search(email)):total_score+=25
-		if(contains_last.search(email)):total_score+=25
+		if(contains_first.search(email)):total_score+=2.5
+		if(contains_last.search(email)):total_score+=2.5
 	else:pass	
 
 	#print("###################",total_score)
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
 
 
-
+#total score=510
 
 
 

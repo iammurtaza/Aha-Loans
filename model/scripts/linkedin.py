@@ -164,7 +164,7 @@ if(value['name'] and value['email']):
         email=value['email']
         contains_f=re.compile(first_name.lower())
         contains_l=re.compile(last_name.lower())
-        if(contains_f.search(email.lower()) and contains_l.search(email.lower()) ):total_score+=50
+        if(contains_f.search(email.lower()) and contains_l.search(email.lower()) ):total_score+=25
         elif(contains_f.search(email.lower()) or contains_l.search(email.lower())):total_score+=25
         else:pass    
     except:pass
@@ -175,5 +175,5 @@ last_name
 # In[359]:
 
 
-total_score
+#total_score=490
 
