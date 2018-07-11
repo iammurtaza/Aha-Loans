@@ -10,7 +10,7 @@ import re,os,json
 # In[24]:
 
 
-val='{"token":"EAAWI8wxzZBC4BAOpC9mKuJm4SxPkKEYqRpJ249WUeEkJUD9Whhtiq8c8EvAxzwEL6vyRT39X5VpsPuPRjexSzmZCb7dRGWtACxE7Curq6u5ZCd8Fp3v6uQkfjDzhp8dE9bblGsPMUJ6cBDKvZB5er6LYLn9en5IlBhrxZCYTW2AZDZD","refreshToken":null,"expiresIn":5178523,"id":"1730828933650713","nickname":null,"name":"Sunny Yasser","email":"sunnyyasser@gmail.com","avatar":"https:\/\/graph.facebook.com\/v2.10\/1730828933650713\/picture?type=normal","user":{"name":"Sunny Yasser","email":"sunnyyasser@gmail.com","gender":"male","verified":true,"link":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEdhek1nY0syLVlJZA0FVRjB0T0pwUHZAKRmVtR29yWTlhSUtLRWpJZAWpWTlFBOTVvMWYzTUU0amE0T3RCUlpzQlVfNjRZAY3MzTm5yT1RPcUh1TldjVzJWaXdqOHZASZAHkxWl9Hc0tsU3BHOFNxWHZAvRncZD\/","id":"1730828933650713"},"avatar_original":"https:\/\/graph.facebook.com\/v2.10\/1730828933650713\/picture?width=1920","profileUrl":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEdhek1nY0syLVlJZA0FVRjB0T0pwUHZAKRmVtR29yWTlhSUtLRWpJZAWpWTlFBOTVvMWYzTUU0amE0T3RCUlpzQlVfNjRZAY3MzTm5yT1RPcUh1TldjVzJWaXdqOHZASZAHkxWl9Hc0tsU3BHOFNxWHZAvRncZD\/"}'
+val='{"token":"EAAWI8wxzZBC4BAGGJ0WsGgeZB1NZB7qpxTHN22RH4u7fgkDizYsCVuM4vzRwTqy0P4dRpA8h7IUunifZAKQZAMPNfdAzTFGXZCghZAbODOtkpLJNEYhH8VmSRW4WPIkma0nfhDDlsZBusCWDvFVI4fR5x8QWn0fNRfnbzm33p6ozFAZDZD","refreshToken":null,"expiresIn":5183998,"id":"1628721273866352","nickname":null,"name":"Akbar Ali","email":"akbarrizvi2000@yahoo.co.in","avatar":"https:\/\/graph.facebook.com\/v2.10\/1628721273866352\/picture?type=normal","user":{"name":"Akbar Ali","email":"akbarrizvi2000@yahoo.co.in","gender":"male","verified":true,"link":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEU0MEVpZAjNnclVROExCcUpJNUk4V2JIOFRXSlBRTXUtbVljUnZAxUFpHNG5kX3VUOC1ReTVIT3BhTi10Y045VWJCemtlMjNWMFlfUnFQQzdMb3FyMWdKdWRNVFZAPM2tUaU5qMmZAVMEFISktlOEFfOHcZD\/","id":"1628721273866352"},"avatar_original":"https:\/\/graph.facebook.com\/v2.10\/1628721273866352\/picture?width=1920","profileUrl":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEU0MEVpZAjNnclVROExCcUpJNUk4V2JIOFRXSlBRTXUtbVljUnZAxUFpHNG5kX3VUOC1ReTVIT3BhTi10Y045VWJCemtlMjNWMFlfUnFQQzdMb3FyMWdKdWRNVFZAPM2tUaU5qMmZAVMEFISktlOEFfOHcZD\/"}'
 
 
 # In[25]:
@@ -60,7 +60,7 @@ except:
 
 
 # In[53]:
-
+print(totalScore)
 
 
 
