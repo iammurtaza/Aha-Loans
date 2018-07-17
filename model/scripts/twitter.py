@@ -8,7 +8,7 @@ def main():
 	#accnt=sys.argv[1]
 	#args=sys.argv[2:]
 	accnt="twitter"
-	args='{"token":"935426607220629504-YMpxqgZv5EViljATeuU3Xwuj875nvrM","tokenSecret":"tw5YPyEXLqduUFFTCn67vH2TyFGj0mH0wUoaAp3iH9oM1","id":"935426607220629504","nickname":"mhzTweets","name":"Murtaza Hasan","email":"murtaza.hasan.zaidi@gmail.com","avatar":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","user":{"id_str":"935426607220629504","entities":{"description":{"urls":[]}},"protected":false,"followers_count":5,"friends_count":71,"listed_count":0,"created_at":"Tue Nov 28 08:34:17 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":0,"lang":"en","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_tile":false,"profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none","suspended":false,"needs_phone_verification":false,"url":null,"profile_background_image_url":null,"profile_background_image_url_https":null,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","location":"","description":""},"avatar_original":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile.png"}'
+	args='{"token":"2893967203-dOE22LzIdWCe3CPtNZ9A8Ln294ECNM2zHGERnAe","tokenSecret":"Ru45pT4i1ZgMMGlJ9T8E4EusHNpHRrMv2SOWeMAUFEvMt","id":"2893967203","nickname":"SunnyYasser","name":"Sunny Yasser","email":"sunnyyasser@gmail.com","avatar":"http:\/\/pbs.twimg.com\/profile_images\/531118150880735232\/mt-lTYJf_normal.jpeg","user":{"id_str":"2893967203","entities":{"description":{"urls":[]}},"protected":false,"followers_count":1,"friends_count":39,"listed_count":0,"created_at":"Sat Nov 08 16:10:33 +0000 2014","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":0,"lang":"en","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"C0DEED","profile_background_tile":false,"profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none","suspended":false,"needs_phone_verification":false,"url":null,"profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/531118150880735232\/mt-lTYJf_normal.jpeg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/531118150880735232\/mt-lTYJf_normal.jpeg","location":"","description":""},"avatar_original":"http:\/\/pbs.twimg.com\/profile_images\/531118150880735232\/mt-lTYJf.jpeg"}'
 	
 
 	
@@ -81,8 +81,8 @@ def twitterScore(value):
 		contains_first=re.compile(first_name.lower())
 		contains_last=re.compile(last_name.lower())
 
-		if(contains_first.search(email)):total_score+=2.5
-		if(contains_last.search(email)):total_score+=2.5
+		if(contains_first.search(email)):total_score+=25
+		if(contains_last.search(email)):total_score+=25
 	else:pass	
 
 	#print("###################",total_score)

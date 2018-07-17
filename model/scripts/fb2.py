@@ -5,31 +5,31 @@ args2='{"token":"EAAWI8wxzZBC4BAOpC9mKuJm4SxPkKEYqRpJ249WUeEkJUD9Whhtiq8c8EvAxzw
 args3='{"token":"EAAWI8wxzZBC4BAJsWEDXggQPrL76B9kKZCCM0VcqhqqJc5ZBUR4rdHXpxM22MlI4Pq0hmJn5vOgAfEmlS4LtaimjO3h9VmWnIcxQZAzqPqsCUV9jEpRqpjZCDnVLijpy86uytg31HYXpxsLSL28FBallZBzIyVNezCHF5NZCNlEJAZDZD","refreshToken":null,"expiresIn":5183998,"id":"2102376263110359","nickname":null,"name":"Murtaza Hasan","email":"murtazaygenius@gmail.com","avatar":"https:\/\/graph.facebook.com\/v2.10\/2102376263110359\/picture?type=normal","user":{"name":"Murtaza Hasan","email":"murtazaygenius@gmail.com","gender":"male","verified":true,"link":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEVQY1FhUkJDTVR4OWx4UThHUU5aYXFxd2poNGdXZAW1DbFNfODFNUXBWX0NGQU1FeGFNVlVkWXdJV0FYdVI4bUw2UGRha09MWnhoQzJ4QWR0UXJoRTdlVFlKb0lHems4WXZAzZAWlmM1BFaWw1OWY5V1EZD\/","id":"2102376263110359"},"avatar_original":"https:\/\/graph.facebook.com\/v2.10\/2102376263110359\/picture?width=1920","profileUrl":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEVQY1FhUkJDTVR4OWx4UThHUU5aYXFxd2poNGdXZAW1DbFNfODFNUXBWX0NGQU1FeGFNVlVkWXdJV0FYdVI4bUw2UGRha09MWnhoQzJ4QWR0UXJoRTdlVFlKb0lHems4WXZAzZAWlmM1BFaWw1OWY5V1EZD\/"}'
 args4='{"token":"EAAWI8wxzZBC4BAGGJ0WsGgeZB1NZB7qpxTHN22RH4u7fgkDizYsCVuM4vzRwTqy0P4dRpA8h7IUunifZAKQZAMPNfdAzTFGXZCghZAbODOtkpLJNEYhH8VmSRW4WPIkma0nfhDDlsZBusCWDvFVI4fR5x8QWn0fNRfnbzm33p6ozFAZDZD","refreshToken":null,"expiresIn":5183998,"id":"1628721273866352","nickname":null,"name":"Akbar Ali","email":"akbarrizvi2000@yahoo.co.in","avatar":"https:\/\/graph.facebook.com\/v2.10\/1628721273866352\/picture?type=normal","user":{"name":"Akbar Ali","email":"akbarrizvi2000@yahoo.co.in","gender":"male","verified":true,"link":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEU0MEVpZAjNnclVROExCcUpJNUk4V2JIOFRXSlBRTXUtbVljUnZAxUFpHNG5kX3VUOC1ReTVIT3BhTi10Y045VWJCemtlMjNWMFlfUnFQQzdMb3FyMWdKdWRNVFZAPM2tUaU5qMmZAVMEFISktlOEFfOHcZD\/","id":"1628721273866352"},"avatar_original":"https:\/\/graph.facebook.com\/v2.10\/1628721273866352\/picture?width=1920","profileUrl":"https:\/\/www.facebook.com\/app_scoped_user_id\/YXNpZADpBWEU0MEVpZAjNnclVROExCcUpJNUk4V2JIOFRXSlBRTXUtbVljUnZAxUFpHNG5kX3VUOC1ReTVIT3BhTi10Y045VWJCemtlMjNWMFlfUnFQQzdMb3FyMWdKdWRNVFZAPM2tUaU5qMmZAVMEFISktlOEFfOHcZD\/"}'
 
-value=json.loads(val,strict=False)
+
+value=json.loads(args2,strict=False)
 
 totalScore=0
 
 try:
-    value=json.loads(val,strict=False)
     email=value['email']
-    try:
-        firstName=value['name'].split(" ")[0]
-        containsfirst=re.compile(firstName.lower())
-        if(containsfirst.search(email)):totalScore+=25
-    except:
-        pass
-    try:
-        lastName=value['name'].split(" ")[-1]
-        containslast=re.compile(lastName.lower())
-        if(containslast.search(email)):totalScore+=25
-    except:
-        pass
+    firstName=value['name'].split(" ")[0]
+    print(firstName)
+    containsfirst=re.compile(firstName.lower())
+    if(containsfirst.search(email.lower())):totalScore+=25  
+    lastName=value['name'].split(" ")[-1]
+    print(lastName)
+    containslast=re.compile(lastName.lower())
+    if(containslast.search(email.lower())):totalScore+=25
 except:
     pass
         
 try:
     verify=value['user']['verified']
-    if(verify):totalScore+=30
+    if(verify):
+        totalScore+=30
+        print(1)
     else:pass
 except:
     pass
+
+print(totalScore)
