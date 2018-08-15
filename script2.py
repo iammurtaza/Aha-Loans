@@ -1,29 +1,36 @@
 import pdftotext
-from nltk.tokenize import word_tokenize
+import requests
+import sys
+import os
+import time
 import re
+import string
+from urllib.request import urlopen
+from nltk.tokenize import word_tokenize
+
 def main():
-	# file_url=sys.argv[1]
-	# bank_type=sys.argv[2]
+	file_url=sys.argv[1]
+	bank_type=sys.argv[2]
 
-	# if(bank_type == "icici"):
-	# 	name = file_url.split('/')
-	# 	name2 = name[-1].split('.')
-	# 	filename = name2[0]
-	# 	ts = int(time.time())
-	# 	ts = str(ts)
-	# 	filename=filename+'_'+ts+'.pdf';
-	# 	response = urlopen(file_url)
-	# 	file = open(filename, 'wb')
-	# 	file.write(response.read())
-	# 	file.close()
-	# 	print(checkicici(filename))
-	# 	os.remove(filename)
-
-	# else:
-	# 	print("NOT ICICI")
-	for i in range(1,39):
-		filename = "ICICI"+i+".pdf"
+	if(bank_type == "icici"):
+		name = file_url.split('/')
+		name2 = name[-1].split('.')
+		filename = name2[0]
+		ts = int(time.time())
+		ts = str(ts)
+		filename=filename+'_'+ts+'.pdf';
+		response = urlopen(file_url)
+		file = open(filename, 'wb')
+		file.write(response.read())
+		file.close()
 		print(checkicici(filename))
+		os.remove(filename)
+
+	else:
+		print("NOT ICICI")
+	# for i in range(1,39):
+	# 	filename = "ICICI"+str(i)+".pdf"
+	# 	print(checkicici(filename))
 
 def checkicici(filename):
 	with open(filename, "rb") as f:
@@ -31,8 +38,7 @@ def checkicici(filename):
 	
 	text = str(pdf[0])
 	tokens = word_tokenize(text)
-	for word in tokens:
-		print(word)
+
 	detailed="DETAILED"
 	statement="STATEMENT"	
 	checkdetailed=re.compile(detailed)
